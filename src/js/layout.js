@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+import { SinglePlanet } from "./views/singlePlanet";
+import { SingleStarship } from "./views/singleStarship";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -17,7 +18,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column">
+		<div className="d-flex flex-column main">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
@@ -25,11 +26,14 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
+						<Route exact path="/single/:uid">
 							<Single />
+						</Route>
+						<Route exact path="/single_planet/:uid">
+							<SinglePlanet />
+						</Route>
+						<Route exact path="/single_starship/:uid">
+							<SingleStarship />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
